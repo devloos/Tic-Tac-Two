@@ -4,4 +4,6 @@
 
 #include <iostream>
 
+#include "../map/Map.h"
+
 #endif  // APPLICATION_H_
