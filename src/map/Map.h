@@ -35,6 +35,10 @@ class Map {
  public:
   Map();
   void draw() const;
+
+ private:
+  void drawGrid() const;
+  void drawFilledTiles() const;
 };
 
 #endif  // MAP_H_

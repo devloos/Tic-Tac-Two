@@ -3,7 +3,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_BUILD_TYPE Debug)
 
-project(ttt)
+project(tictactwo)
 
 # Generate compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -26,7 +26,8 @@ if (NOT raylib_FOUND) # If there's none, fetch and build raylib
 endif()
 
 add_executable(
-  ${PROJECT_NAME} src/core/Application.cpp src/map/Map.cpp)
+  ${PROJECT_NAME} src/core/Application.cpp src/map/Map.cpp src/render/Draw.cpp
+  src/logic/Logic.cpp)
 
 target_include_directories(
   ${PROJECT_NAME} PUBLIC build/_deps/raylib-src/src)

@@ -4,7 +4,9 @@
 
 #include <iostream>
 
+#include "../logic/Logic.h"
 #include "../map/Map.h"
+#include "../render/Draw.h"
 #include "../utility/Utility.h"
 
 #endif  // APPLICATION_H_
