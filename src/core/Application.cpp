@@ -1,7 +1,7 @@
 #include "Application.h"
 
 int main() {
-  InitWindow(640, 480, "Tic Tac TWO");
+  InitWindow(Utility::WIN_WIDTH, Utility::WIN_HEIGHT, "Tic Tac TWO");
   Map map;
 
   while (!WindowShouldClose()) {

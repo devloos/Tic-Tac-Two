@@ -5,5 +5,6 @@
 #include <iostream>
 
 #include "../map/Map.h"
+#include "../utility/Utility.h"
 
 #endif  // APPLICATION_H_

@@ -1,10 +1,10 @@
 #include "Map.h"
 
 void Map::draw() const {
-  DrawLineEx(Vector2{210, 0}, Vector2{210, 480}, 5.0, BLACK);
-  DrawLineEx(Vector2{640 - 210, 0}, Vector2{640 - 210, 480}, 5.0, BLACK);
-  DrawLineEx(Vector2{0, 150}, Vector2{640, 150}, 5.0, BLACK);
-  DrawLineEx(Vector2{0, 480 - 150}, Vector2{640, 480 - 150}, 5.0, BLACK);
+  DrawLineEx(VLINE_INNER_START_POS, VLINE_INNER_END_POS, LINE_THICKNESS, BLACK);
+  DrawLineEx(VLINE_OUTER_START_POS, VLINE_OUTER_END_POS, LINE_THICKNESS, BLACK);
+  DrawLineEx(HLINE_TOP_START_POS, HLINE_TOP_END_POS, LINE_THICKNESS, BLACK);
+  DrawLineEx(HLINE_BOTTOM_START_POS, HLINE_BOTTOM_END_POS, LINE_THICKNESS, BLACK);
 }
 
 Map::Map() {}
