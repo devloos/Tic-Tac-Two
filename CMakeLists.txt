@@ -27,7 +27,7 @@ endif()
 
 add_executable(
   ${PROJECT_NAME} src/core/Application.cpp src/map/Map.cpp src/render/Draw.cpp
-  src/logic/Logic.cpp)
+  src/logic/Logic.cpp src/utility/Utility.cpp)
 
 target_include_directories(
   ${PROJECT_NAME} PUBLIC build/_deps/raylib-src/src)

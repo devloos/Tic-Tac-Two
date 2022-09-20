@@ -5,7 +5,7 @@
 #include <iostream>
 
 namespace Logic {
-void start();
+void start(const Sound &btnClickX, const Sound &btnClickO);
 }
 
 #endif  // LOGIC_H_

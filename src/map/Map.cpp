@@ -13,4 +13,7 @@ void Map::drawGrid() const {
   DrawLineEx(HLINE_TOP_START_POS, HLINE_TOP_END_POS, LINE_THICKNESS, BLACK);
   DrawLineEx(HLINE_BOTTOM_START_POS, HLINE_BOTTOM_END_POS, LINE_THICKNESS, BLACK);
 }
-void Map::drawFilledTiles() const {}
+void Map::drawFilledTiles() const {
+  DrawCircleLines(640 / 2, 480 / 2, 50, BLACK);
+  LosRaylib::DrawModelX(640 / 2, 480 / 2, 7.0, BLACK);
+}
