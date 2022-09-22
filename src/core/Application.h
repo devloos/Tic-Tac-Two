@@ -9,4 +9,28 @@
 #include "../render/Draw.h"
 #include "../utility/Utility.h"
 
+class Tapp {
+ public:
+  /**
+   * @brief Construct a new Tapp object
+   *
+   */
+  Tapp();
+
+  /**
+   * @brief
+   *
+   * @return true
+   * @return false
+   */
+  bool init();
+
+  /**
+   * @brief
+   *
+   * @return int
+   */
+  int exec();
+};
+
 #endif  // APPLICATION_H_

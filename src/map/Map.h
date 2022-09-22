@@ -7,7 +7,7 @@
 static const float LINE_THICKNESS = 5.0;
 static const float VLINE_X_POS = 230;
 static const float HLINE_Y_POS = 165;
-static const float BOUNDARY = 50;
+static const float BOUNDARY = 30;
 
 // Handles vertical inner line start and end positions
 static const Vector2 VLINE_INNER_START_POS = Vector2{VLINE_X_POS, BOUNDARY};
@@ -21,15 +21,15 @@ static const Vector2 VLINE_OUTER_END_POS =
     Vector2{Utility::WIN_WIDTH - VLINE_X_POS, Utility::WIN_HEIGHT - BOUNDARY};
 
 // Horizontal top line start and end positions
-static const Vector2 HLINE_TOP_START_POS = Vector2{BOUNDARY, HLINE_Y_POS};
+static const Vector2 HLINE_TOP_START_POS = Vector2{BOUNDARY + 20, HLINE_Y_POS};
 static const Vector2 HLINE_TOP_END_POS =
-    Vector2{Utility::WIN_WIDTH - BOUNDARY, HLINE_Y_POS};
+    Vector2{Utility::WIN_WIDTH - BOUNDARY - 20, HLINE_Y_POS};
 
 // Horizontal bottom line start and end positions
 static const Vector2 HLINE_BOTTOM_START_POS =
-    Vector2{BOUNDARY, Utility::WIN_HEIGHT - HLINE_Y_POS};
+    Vector2{BOUNDARY + 20, Utility::WIN_HEIGHT - HLINE_Y_POS};
 static const Vector2 HLINE_BOTTOM_END_POS =
-    Vector2{Utility::WIN_WIDTH - BOUNDARY, Utility::WIN_HEIGHT - HLINE_Y_POS};
+    Vector2{Utility::WIN_WIDTH - BOUNDARY - 20, Utility::WIN_HEIGHT - HLINE_Y_POS};
 
 class Map {
  public:

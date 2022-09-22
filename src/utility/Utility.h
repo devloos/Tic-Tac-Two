@@ -8,6 +8,14 @@ const int WIN_HEIGHT = 480;
 }  // namespace Utility
 
 namespace LosRaylib {
+/**
+ * @brief
+ *
+ * @param centerX
+ * @param centerY
+ * @param thickness
+ * @param color
+ */
 void DrawModelX(
     const float &centerX, const float &centerY, const float &thickness,
     const Color &color);
