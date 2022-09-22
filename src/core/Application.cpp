@@ -9,10 +9,7 @@ Tapp::~Tapp() {
 }
 
 bool Tapp::init() {
-  if (!initCore()) {
-    return false;
-  }
-  if (!initUtil()) {
+  if (!initCore() || !initUtil()) {
     return false;
   }
   SetTargetFPS(60);
