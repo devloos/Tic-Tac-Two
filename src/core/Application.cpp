@@ -2,26 +2,45 @@
 
 Tapp::Tapp() {}
 
+Tapp::~Tapp() {
+  for (const auto &sound : soundFX_) {
+    UnloadSound(sound);
+  }
+}
+
 bool Tapp::init() {
-  InitWindow(Utility::WIN_WIDTH, Utility::WIN_HEIGHT, "Tic Tac TWO");
-  if (!IsWindowReady()) return false;
-  InitAudioDevice();
-  if (!IsAudioDeviceReady()) return false;
+  if (!initCore()) {
+    return false;
+  }
+  if (!initUtil()) {
+    return false;
+  }
   SetTargetFPS(60);
   return true;
 }
 
 int Tapp::exec() {
   Map map;
-  Sound btnClickX = LoadSound("../assets/audio/X-Mode.mp3");
-  Sound btnClickO = LoadSound("../assets/audio/Big-O.mp3");
 
   while (!WindowShouldClose()) {
     Draw::start(map);
-    Logic::start(btnClickX, btnClickO);
+    Logic::start(soundFX_);
   }
 
-  UnloadSound(btnClickX);
-  UnloadSound(btnClickO);
   return 0;
+}
+
+bool Tapp::initCore() {
+  InitWindow(Utility::WIN_WIDTH, Utility::WIN_HEIGHT, "Tic Tac TWO");
+  InitAudioDevice();
+  if (!IsWindowReady() || !IsAudioDeviceReady()) {
+    return false;
+  }
+  return true;
+}
+
+bool Tapp::initUtil() {
+  soundFX_.push_back(LoadSound("../assets/audio/X-Mode.mp3"));
+  soundFX_.push_back(LoadSound("../assets/audio/Big-O.mp3"));
+  return true;
 }

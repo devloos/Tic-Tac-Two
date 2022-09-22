@@ -3,22 +3,17 @@
 #include <raylib.h>
 
 #include <iostream>
+#include <vector>
 
 namespace Logic {
+void start(const std::vector<Sound> &soundFX);
 /**
  * @brief
  *
  * @param btnClickX
  * @param btnClickO
  */
-void start(const Sound &btnClickX, const Sound &btnClickO);
-/**
- * @brief
- *
- * @param btnClickX
- * @param btnClickO
- */
-void gridMouseClick(const Sound &btnClickX, const Sound &btnClickO);
+void gridMouseClick(const std::vector<Sound> &soundFX);
 }  // namespace Logic
 
 #endif  // LOGIC_H_

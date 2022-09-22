@@ -3,6 +3,7 @@
 #include <raylib.h>
 
 #include <iostream>
+#include <vector>
 
 #include "../logic/Logic.h"
 #include "../map/Map.h"
@@ -18,6 +19,12 @@ class Tapp {
   Tapp();
 
   /**
+   * @brief Destroy the Tapp object
+   *
+   */
+  ~Tapp();
+
+  /**
    * @brief
    *
    * @return true
@@ -31,6 +38,13 @@ class Tapp {
    * @return int
    */
   int exec();
+
+ private:
+  bool initCore();
+  bool initUtil();
+
+ private:
+  std::vector<Sound> soundFX_;
 };
 
 #endif  // APPLICATION_H_
