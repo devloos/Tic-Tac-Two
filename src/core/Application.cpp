@@ -17,10 +17,10 @@ bool Tapp::init() {
 }
 
 int Tapp::exec() {
-  Map map;
+  Map::Grid grid;
 
   while (!WindowShouldClose()) {
-    Draw::start(map);
+    Draw::start(grid);
     Logic::start(soundFX_);
   }
 

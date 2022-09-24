@@ -2,6 +2,9 @@
 #define MAP_H_
 #include <raylib.h>
 
+#include <unordered_map>
+#include <utility>
+
 #include "../utility/Utility.h"
 
 static const float LINE_THICKNESS = 5.0;
@@ -31,14 +34,23 @@ static const Vector2 HLINE_BOTTOM_START_POS =
 static const Vector2 HLINE_BOTTOM_END_POS =
     Vector2{Utility::WIN_WIDTH - BOUNDARY - 20, Utility::WIN_HEIGHT - HLINE_Y_POS};
 
-class Map {
+namespace Map {
+enum struct Tile { ONE = 1, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE };
+const std::unordered_map<Tile, std::pair<double, double>> TILE_MAP_COOR = {
+    {Tile::ONE, {10.0, 10.0}},   {Tile::TWO, {10.0, 10.0}},   {Tile::THREE, {10.0, 10.0}},
+    {Tile::FOUR, {10.0, 10.0}},  {Tile::FIVE, {320, 240}},    {Tile::SIX, {10.0, 10.0}},
+    {Tile::SEVEN, {10.0, 10.0}}, {Tile::EIGHT, {10.0, 10.0}}, {Tile::NINE, {10.0, 10.0}}};
+
+class Grid {
  public:
-  Map();
+  Grid();
   void draw() const;
 
  private:
   void drawGrid() const;
   void drawFilledTiles() const;
 };
+
+}  // namespace Map
 
 #endif  // MAP_H_

@@ -1,10 +1,10 @@
 #include "Draw.h"
 
 namespace Draw {
-void start(const Map &map) {
+void start(const Map::Grid &grid) {
   BeginDrawing();
   ClearBackground(RAYWHITE);
-  map.draw();
+  grid.draw();
   EndDrawing();
 }
 }  // namespace Draw

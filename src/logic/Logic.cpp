@@ -12,6 +12,7 @@ void gridMouseClick(const std::vector<Sound> &soundFX) {
   const int MY = GetMouseY();
 
   static int turn = 1;
+  int square = 0;
 
   for (int row = 0; row < 3; row++) {
     for (int col = 0; col < 3; col++) {
@@ -22,6 +23,7 @@ void gridMouseClick(const std::vector<Sound> &soundFX) {
         turn++;
       }
     }
+    square++;
   }
 }
 }  // namespace Logic

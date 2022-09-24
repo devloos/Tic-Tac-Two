@@ -6,13 +6,8 @@
 #include <vector>
 
 namespace Logic {
+
 void start(const std::vector<Sound> &soundFX);
-/**
- * @brief
- *
- * @param btnClickX
- * @param btnClickO
- */
 void gridMouseClick(const std::vector<Sound> &soundFX);
 }  // namespace Logic
 

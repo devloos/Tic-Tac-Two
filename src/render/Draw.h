@@ -5,7 +5,7 @@
 #include "../map/Map.h"
 
 namespace Draw {
-void start(const Map &map);
+void start(const Map::Grid &grid);
 }
 
 #endif  // DRAW_H_
