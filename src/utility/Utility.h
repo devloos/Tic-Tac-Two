@@ -19,6 +19,7 @@ namespace LosRaylib {
 void DrawModelX(
     const float &centerX, const float &centerY, const float &thickness,
     const Color &color);
+void DrawModelO(const float &centerX, const float &centerY, const Color &color);
 }  // namespace LosRaylib
 
 #endif  // UTILITY_H_

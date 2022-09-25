@@ -4,10 +4,11 @@
 
 #include <unordered_map>
 #include <utility>
+#include <vector>
 
 #include "../utility/Utility.h"
 
-static const float LINE_THICKNESS = 5.0;
+static const float LINE_THICKNESS = 8.0;
 static const float VLINE_X_POS = 230;
 static const float HLINE_Y_POS = 165;
 static const float BOUNDARY = 30;
@@ -36,19 +37,22 @@ static const Vector2 HLINE_BOTTOM_END_POS =
 
 namespace Map {
 enum struct Tile { ONE = 1, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE };
-const std::unordered_map<Tile, std::pair<double, double>> TILE_MAP_COOR = {
-    {Tile::ONE, {10.0, 10.0}},   {Tile::TWO, {10.0, 10.0}},   {Tile::THREE, {10.0, 10.0}},
-    {Tile::FOUR, {10.0, 10.0}},  {Tile::FIVE, {320, 240}},    {Tile::SIX, {10.0, 10.0}},
-    {Tile::SEVEN, {10.0, 10.0}}, {Tile::EIGHT, {10.0, 10.0}}, {Tile::NINE, {10.0, 10.0}}};
+const std::unordered_map<Tile, std::pair<double, double>> TILES_MAP_COOR = {
+    {Tile::ONE, {140, 100}},   {Tile::TWO, {320, 100}},   {Tile::THREE, {500, 100.0}},
+    {Tile::FOUR, {140, 240}},  {Tile::FIVE, {320, 240}},  {Tile::SIX, {500, 240}},
+    {Tile::SEVEN, {140, 380}}, {Tile::EIGHT, {320, 380}}, {Tile::NINE, {500, 380}}};
 
 class Grid {
  public:
   Grid();
   void draw() const;
 
+  bool isTileAvailable(const Tile &tile) const;
+
  private:
   void drawGrid() const;
   void drawFilledTiles() const;
+  std::vector<Tile> availableTiles_;
 };
 
 }  // namespace Map
