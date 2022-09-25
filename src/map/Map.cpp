@@ -1,6 +1,11 @@
 #include "Map.h"
 
-Map::Grid::Grid() {}
+Map::Grid::Grid() {
+  for (int tile = 1; tile <= 9; tile++) {
+    tileAvailability_.emplace(
+        static_cast<Tile>(tile), std::make_pair<bool, char>(true, 'N'));
+  }
+}
 
 void Map::Grid::draw() const {
   this->drawGrid();
@@ -14,17 +19,17 @@ void Map::Grid::drawGrid() const {
   DrawLineEx(HLINE_BOTTOM_START_POS, HLINE_BOTTOM_END_POS, LINE_THICKNESS, BLACK);
 }
 void Map::Grid::drawFilledTiles() const {
-  for (int i = 1; i <= 9; i++) {
-    LosRaylib::DrawModelO(
-        TILES_MAP_COOR.at(static_cast<Tile>(i)).first,
-        TILES_MAP_COOR.at(static_cast<Tile>(i)).second, RAYWHITE);
-    LosRaylib::DrawModelX(
-        TILES_MAP_COOR.at(static_cast<Tile>(i)).first,
-        TILES_MAP_COOR.at(static_cast<Tile>(i)).second, 8.0, BLACK);
+  for (int tile = 1; tile <= 9; tile++) {
+    Raylib::DrawModelO(
+        TILES_MAP_COOR.at(static_cast<Tile>(tile)).first,
+        TILES_MAP_COOR.at(static_cast<Tile>(tile)).second, RAYWHITE);
+    Raylib::DrawModelX(
+        TILES_MAP_COOR.at(static_cast<Tile>(tile)).first,
+        TILES_MAP_COOR.at(static_cast<Tile>(tile)).second, 8.0, BLACK);
     //           if (tile is filled) {
     //     switch (who) {
     //       case X:
-    //         LosRaylib::DrawModelX(
+    //         Raylib::DrawModelX(
     //             TILES_MAP_COOR.at(static_cast<Tile>(i)).first,
     //             TILES_MAP_COOR.at(static_cast<Tile>(i)).second, 7.0, BLACK);
     //         break;

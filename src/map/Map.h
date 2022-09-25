@@ -2,6 +2,7 @@
 #define MAP_H_
 #include <raylib.h>
 
+#include <iostream>
 #include <unordered_map>
 #include <utility>
 #include <vector>
@@ -45,7 +46,7 @@ class Grid {
  private:
   void drawGrid() const;
   void drawFilledTiles() const;
-  std::vector<Tile> availableTiles_;
+  std::unordered_map<Tile, std::pair<bool, char>> tileAvailability_;
 };
 
 }  // namespace Map

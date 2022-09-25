@@ -7,7 +7,7 @@ const int WIN_WIDTH = 640;
 const int WIN_HEIGHT = 480;
 }  // namespace Utility
 
-namespace LosRaylib {
+namespace Raylib {
 /**
  * @brief
  *
@@ -20,6 +20,6 @@ void DrawModelX(
     const float &centerX, const float &centerY, const float &thickness,
     const Color &color);
 void DrawModelO(const float &centerX, const float &centerY, const Color &color);
-}  // namespace LosRaylib
+}  // namespace Raylib
 
 #endif  // UTILITY_H_

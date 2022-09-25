@@ -1,6 +1,6 @@
 #include "Utility.h"
 
-namespace LosRaylib {
+namespace Raylib {
 void DrawModelX(
     const float &centerX, const float &centerY, const float &thickness,
     const Color &color) {
@@ -18,4 +18,4 @@ void DrawModelO(const float &centerX, const float &centerY, const Color &color) 
   DrawCircle(centerX, centerY, 50, BLACK);
   DrawCircle(centerX, centerY, 42, RAYWHITE);
 }
-}  // namespace LosRaylib
+}  // namespace Raylib
