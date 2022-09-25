@@ -6,7 +6,6 @@
 #include <vector>
 
 namespace Logic {
-
 void start(const std::vector<Sound> &soundFX);
 void gridMouseClick(const std::vector<Sound> &soundFX);
 }  // namespace Logic

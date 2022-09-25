@@ -12,18 +12,19 @@ void gridMouseClick(const std::vector<Sound> &soundFX) {
   const int MY = GetMouseY();
 
   static int turn = 1;
-  int square = 0;
+  int tile = 0;
+  bool inTileArea = false;
 
   for (int row = 0; row < 3; row++) {
     for (int col = 0; col < 3; col++) {
-      bool inRectangleArea = MX > 50 + (180 * col) && MX < 230 + (180 * col) &&
-                             MY > 30 + (145 * row) && MY < 165 + (145 * row);
-      if (inRectangleArea) {
+      inTileArea = MX > 50 + (180 * col) && MX < 230 + (180 * col) &&
+                   MY > 30 + (145 * row) && MY < 165 + (145 * row);
+      if (inTileArea) {
         PlaySound((turn % 2 == 0) ? soundFX.at(1) : soundFX.at(0));
         turn++;
       }
     }
-    square++;
+    tile++;
   }
 }
 }  // namespace Logic
