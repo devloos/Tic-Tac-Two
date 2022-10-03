@@ -21,7 +21,7 @@ int Tapp::exec() {
 
   while (!WindowShouldClose()) {
     Draw::start(grid);
-    Logic::start(soundFX_);
+    Logic::start(grid, soundFX_);
   }
 
   return 0;

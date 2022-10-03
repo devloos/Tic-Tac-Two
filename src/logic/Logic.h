@@ -5,9 +5,11 @@
 #include <iostream>
 #include <vector>
 
+#include "../map/Map.h"
+
 namespace Logic {
-void start(const std::vector<Sound> &soundFX);
-void gridMouseClick(const std::vector<Sound> &soundFX);
+void start(Map::Grid &grid, const std::vector<Sound> &soundFX);
+void gridMouseClick(Map::Grid &grid, const std::vector<Sound> &soundFX);
 }  // namespace Logic
 
 #endif  // LOGIC_H_

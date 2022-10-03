@@ -42,11 +42,17 @@ class Grid {
   void draw() const;
 
   bool isTileAvailable(const Tile &tile) const;
+  void setFilledTile(const Tile &tile, const char user);
 
  private:
   void drawGrid() const;
   void drawFilledTiles() const;
-  std::unordered_map<Tile, std::pair<bool, char>> tileAvailability_;
+  // Tiles will be popped as tiles get filled
+  std::vector<Tile> availableTiles_ = {Tile::ONE,   Tile::TWO,   Tile::THREE,
+                                       Tile::FOUR,  Tile::FIVE,  Tile::SIX,
+                                       Tile::SEVEN, Tile::EIGHT, Tile::NINE};
+  // Tiles will be added as they get filled
+  std::vector<std::pair<Tile, char>> filledTiles_;
 };
 
 }  // namespace Map

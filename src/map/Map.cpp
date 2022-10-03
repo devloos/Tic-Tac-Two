@@ -1,11 +1,6 @@
 #include "Map.h"
 
-Map::Grid::Grid() {
-  for (int tile = 1; tile <= 9; tile++) {
-    tileAvailability_.emplace(
-        static_cast<Tile>(tile), std::make_pair<bool, char>(true, 'N'));
-  }
-}
+Map::Grid::Grid() {}
 
 void Map::Grid::draw() const {
   this->drawGrid();
@@ -19,26 +14,32 @@ void Map::Grid::drawGrid() const {
   DrawLineEx(HLINE_BOTTOM_START_POS, HLINE_BOTTOM_END_POS, LINE_THICKNESS, BLACK);
 }
 void Map::Grid::drawFilledTiles() const {
-  for (int tile = 1; tile <= 9; tile++) {
-    Raylib::DrawModelO(
-        TILES_MAP_COOR.at(static_cast<Tile>(tile)).first,
-        TILES_MAP_COOR.at(static_cast<Tile>(tile)).second, RAYWHITE);
-    Raylib::DrawModelX(
-        TILES_MAP_COOR.at(static_cast<Tile>(tile)).first,
-        TILES_MAP_COOR.at(static_cast<Tile>(tile)).second, 8.0, BLACK);
-    //           if (tile is filled) {
-    //     switch (who) {
-    //       case X:
-    //         Raylib::DrawModelX(
-    //             TILES_MAP_COOR.at(static_cast<Tile>(i)).first,
-    //             TILES_MAP_COOR.at(static_cast<Tile>(i)).second, 7.0, BLACK);
-    //         break;
-    //       case O:
-    //         DrawCircleLines(
-    //             TILES_MAP_COOR.at(static_cast<Tile>(i)).first,
-    //             TILES_MAP_COOR.at(static_cast<Tile>(i)).second, 50, BLACK);
-    //         break;
-    //     }
-    //   }
+  for (const auto &tile : filledTiles_) {
+    switch (tile.second) {
+      case 'X':
+        Raylib::DrawModelX(
+            TILES_MAP_COOR.at(tile.first).first, TILES_MAP_COOR.at(tile.first).second,
+            8.0, BLACK);
+        break;
+      case 'O':
+        Raylib::DrawModelO(
+            TILES_MAP_COOR.at(tile.first).first, TILES_MAP_COOR.at(tile.first).second,
+            RAYWHITE);
+        break;
+    }
   }
+}
+
+bool Map::Grid::isTileAvailable(const Tile &tile) const {
+  auto result = std::find(availableTiles_.begin(), availableTiles_.end(), tile);
+  return (result != std::end(availableTiles_)) ? true : false;
+}
+
+void Map::Grid::setFilledTile(const Tile &tile, const char user) {
+  std::vector<Tile>::iterator it =
+      std::find(availableTiles_.begin(), availableTiles_.end(), tile);
+  // TODO: DEEP check whether tile is filled and user is being dumb
+  if (it == std::end(availableTiles_)) throw "ERROR";
+  availableTiles_.erase(it);
+  filledTiles_.push_back(std::make_pair(tile, user));
 }

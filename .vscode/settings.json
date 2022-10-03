@@ -12,6 +12,8 @@
 		"algorithm": "cpp",
 		"functional": "cpp",
 		"vector": "cpp",
-		"unordered_map": "cpp"
+		"unordered_map": "cpp",
+		"iostream": "cpp",
+		"utility": "cpp"
 	},
 }
