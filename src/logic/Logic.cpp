@@ -12,21 +12,20 @@ void gridMouseClick(Map::Grid &grid, const std::vector<Sound> &soundFX) {
   const int MY = GetMouseY();
 
   static int turn = 1;
-  int tile = 1;
-  bool inTileArea = false;
+  Map::Tile tile = Map::Tile::ONE;
 
   for (int row = 0; row < 3; row++) {
     for (int col = 0; col < 3; col++) {
-      inTileArea = MX > 50 + (180 * col) && MX < 230 + (180 * col) &&
-                   MY > 30 + (145 * row) && MY < 165 + (145 * row);
+      bool inTileArea = MX > 50 + (180 * col) && MX < 230 + (180 * col) &&
+                        MY > 30 + (145 * row) && MY < 165 + (145 * row);
       if (inTileArea) {
-        if (grid.isTileAvailable(static_cast<Map::Tile>(tile))) {
+        if (grid.isTileAvailable(tile)) {
           PlaySound((turn % 2 == 0) ? soundFX.at(1) : soundFX.at(0));
-          grid.setFilledTile(static_cast<Map::Tile>(tile), (turn % 2 == 0) ? 'O' : 'X');
-          turn++;
+          grid.setFilledTile(tile, (turn % 2 == 0) ? 'O' : 'X');
+          ++turn;
         }
       }
-      tile++;
+      ++tile;
     }
   }
 }

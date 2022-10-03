@@ -43,3 +43,15 @@ void Map::Grid::setFilledTile(const Tile &tile, const char user) {
   availableTiles_.erase(it);
   filledTiles_.push_back(std::make_pair(tile, user));
 }
+
+Map::Tile &Map::operator++(Map::Tile &tile) {
+  int i = static_cast<int>(tile);
+  tile = static_cast<Map::Tile>(++i);
+  return tile;
+}
+
+Map::Tile &Map::operator--(Map::Tile &tile) {
+  int i = static_cast<int>(tile);
+  tile = static_cast<Map::Tile>(++i);
+  return tile;
+}

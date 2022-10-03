@@ -31,6 +31,11 @@ static const Vector2 HLINE_BOTTOM_END_POS =
 
 namespace Map {
 enum struct Tile { ONE = 1, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE };
+// Util for tile enum
+Tile &operator++(Tile &tile);
+Tile &operator--(Tile &tile);
+
+// Center coords for each tile
 const std::unordered_map<Tile, std::pair<double, double>> TILES_MAP_COOR = {
     {Tile::ONE, {140, 100}},   {Tile::TWO, {320, 100}},   {Tile::THREE, {500, 100.0}},
     {Tile::FOUR, {140, 240}},  {Tile::FIVE, {320, 240}},  {Tile::SIX, {500, 240}},
