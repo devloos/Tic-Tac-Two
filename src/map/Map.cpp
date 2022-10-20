@@ -13,19 +13,22 @@ void Map::Grid::drawGrid() const {
   DrawLineEx(HLINE_TOP_START_POS, HLINE_TOP_END_POS, LINE_THICKNESS, BLACK);
   DrawLineEx(HLINE_BOTTOM_START_POS, HLINE_BOTTOM_END_POS, LINE_THICKNESS, BLACK);
 }
+
 void Map::Grid::drawFilledTiles() const {
   for (const auto &tile : filledTiles_) {
     switch (tile.second) {
-      case 'X':
+      case 'X': {
         Raylib::DrawModelX(
             TILES_MAP_COOR.at(tile.first).first, TILES_MAP_COOR.at(tile.first).second,
             8.0, BLACK);
         break;
-      case 'O':
+      }
+      case 'O': {
         Raylib::DrawModelO(
             TILES_MAP_COOR.at(tile.first).first, TILES_MAP_COOR.at(tile.first).second,
             RAYWHITE);
         break;
+      }
     }
   }
 }
@@ -38,8 +41,12 @@ bool Map::Grid::isTileAvailable(const Tile &tile) const {
 void Map::Grid::setFilledTile(const Tile &tile, const char user) {
   std::vector<Tile>::iterator it =
       std::find(availableTiles_.begin(), availableTiles_.end(), tile);
+
   // TODO: DEEP check whether tile is filled and user is being dumb
-  if (it == std::end(availableTiles_)) throw "ERROR";
+  if (it == std::end(availableTiles_)) {
+    throw "ERROR";
+  }
+
   availableTiles_.erase(it);
   filledTiles_.push_back(std::make_pair(tile, user));
 }
