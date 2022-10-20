@@ -12,34 +12,16 @@
 
 class Tapp {
  public:
-  /**
-   * @brief Construct a new Tapp object
-   *
-   */
+  // Constructors
   Tapp();
-
-  /**
-   * @brief Destroy the Tapp object
-   *
-   */
   ~Tapp();
 
-  /**
-   * @brief
-   *
-   * @return true
-   * @return false
-   */
+  // Methods
   bool init();
-
-  /**
-   * @brief
-   *
-   * @return int
-   */
   int exec();
 
  private:
+  // Methods
   bool initCore();
   bool initUtil();
 
