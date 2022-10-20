@@ -1,4 +1,4 @@
-#include "Logic.h"
+#include "logic.h"
 
 namespace Logic {
 void start(Map::Grid &grid, const std::vector<Sound> &soundFX) {
