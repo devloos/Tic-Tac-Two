@@ -9,9 +9,15 @@ Tapp::~Tapp() {
 }
 
 bool Tapp::init() {
-  if (!initCore() || !initUtil()) {
+  InitWindow(Utility::WIN_WIDTH, Utility::WIN_HEIGHT, "Tic Tac TWO");
+  InitAudioDevice();
+  if (!IsWindowReady() || !IsAudioDeviceReady()) {
     return false;
   }
+
+  soundFX_.push_back(LoadSound("../assets/audio/X-Mode.mp3"));
+  soundFX_.push_back(LoadSound("../assets/audio/Big-O.mp3"));
+
   SetTargetFPS(60);
   return true;
 }
@@ -25,21 +31,6 @@ int Tapp::exec() {
   }
 
   return 0;
-}
-
-bool Tapp::initCore() {
-  InitWindow(Utility::WIN_WIDTH, Utility::WIN_HEIGHT, "Tic Tac TWO");
-  InitAudioDevice();
-  if (!IsWindowReady() || !IsAudioDeviceReady()) {
-    return false;
-  }
-  return true;
-}
-
-bool Tapp::initUtil() {
-  soundFX_.push_back(LoadSound("../assets/audio/X-Mode.mp3"));
-  soundFX_.push_back(LoadSound("../assets/audio/Big-O.mp3"));
-  return true;
 }
 
 int main() {

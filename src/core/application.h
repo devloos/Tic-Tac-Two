@@ -23,11 +23,6 @@ class Tapp {
   int exec();
 
  private:
-  // Methods
-  bool initCore();
-  bool initUtil();
-
- private:
   std::vector<Sound> soundFX_;
 };
 
