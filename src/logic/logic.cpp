@@ -5,6 +5,7 @@ void start(Map::Grid &grid, const std::vector<Sound> &soundFX) {
   if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
     gridMouseClick(grid, soundFX);
   }
+  // TODO: Validate win
 }
 
 void gridMouseClick(Map::Grid &grid, const std::vector<Sound> &soundFX) {
