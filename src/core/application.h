@@ -24,6 +24,7 @@ class Tapp {
 
  private:
   std::vector<Sound> soundFX_;
+  bool gameOver_ = false;
 };
 
 #endif  // APPLICATION_H_
