@@ -26,7 +26,7 @@ if (NOT raylib_FOUND) # If there's none, fetch and build raylib
 endif()
 
 add_executable(
-  ${PROJECT_NAME} src/core/Main.cpp src/core/application.cpp src/map/map.cpp 
+  ${PROJECT_NAME} src/core/application.cpp src/map/map.cpp 
   src/render/draw.cpp src/logic/logic.cpp src/utility/utility.cpp )
 
 target_include_directories(

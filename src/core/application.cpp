@@ -41,3 +41,11 @@ bool Tapp::initUtil() {
   soundFX_.push_back(LoadSound("../assets/audio/Big-O.mp3"));
   return true;
 }
+
+int main() {
+  Tapp app;
+  if (!app.init()) {
+    return EXIT_FAILED;
+  }
+  return app.exec();
+}

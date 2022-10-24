@@ -10,6 +10,8 @@
 #include "../render/draw.h"
 #include "../utility/utility.h"
 
+#define EXIT_FAILED -1
+
 class Tapp {
  public:
   // Constructors
