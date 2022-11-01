@@ -2,9 +2,19 @@
 #define UTILITY_H_
 #include <raylib.h>
 
+#include <string>
+
 namespace Utility {
 const int WIN_WIDTH = 640;
 const int WIN_HEIGHT = 480;
+
+class Exception {
+ private:
+  std::string msg_;
+
+ public:
+  Exception(const std::string &msg);
+};
 }  // namespace Utility
 
 namespace Raylib {

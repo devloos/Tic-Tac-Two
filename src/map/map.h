@@ -59,7 +59,6 @@ class Grid {
   // Tiles will be added as they get filled
   std::vector<std::pair<Tile, char>> filledTiles_;
 };
-
 }  // namespace Map
 
 #endif  // MAP_H_

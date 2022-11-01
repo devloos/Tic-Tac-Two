@@ -42,9 +42,8 @@ void Map::Grid::setFilledTile(const Tile &tile, const char user) {
   std::vector<Tile>::iterator it =
       std::find(availableTiles_.begin(), availableTiles_.end(), tile);
 
-  // TODO: DEEP check whether tile is filled and user is being dumb
   if (it == std::end(availableTiles_)) {
-    throw "ERROR";
+    throw Utility::Exception("Setting filed tile that is already taken.");
   }
 
   availableTiles_.erase(it);

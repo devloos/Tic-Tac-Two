@@ -1,5 +1,9 @@
 #include "utility.h"
 
+namespace Utility {
+Exception::Exception(const std::string &msg) : msg_(msg) {}
+}  // namespace Utility
+
 namespace Raylib {
 void DrawModelX(
     const float &centerX, const float &centerY, const float &thickness,
