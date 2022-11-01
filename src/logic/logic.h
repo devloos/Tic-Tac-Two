@@ -2,6 +2,7 @@
 #define LOGIC_H_
 #include <raylib.h>
 
+#include <array>
 #include <iostream>
 #include <vector>
 

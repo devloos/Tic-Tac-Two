@@ -9,27 +9,29 @@
 
 #include "../utility/utility.h"
 
-static const float LINE_THICKNESS = 8.0;
+const float LINE_THICKNESS = 8.0;
 
 // Handles vertical inner line start and end positions
-static const Vector2 VLINE_INNER_START_POS = Vector2{230, 30};
-static const Vector2 VLINE_INNER_END_POS = Vector2{230, Utility::WIN_HEIGHT - 30};
+const Vector2 VLINE_INNER_START_POS = Vector2{230, 30};
+const Vector2 VLINE_INNER_END_POS = Vector2{230, Utility::WIN_HEIGHT - 30};
 
 // Handles vertical outer line start and end positions
-static const Vector2 VLINE_OUTER_START_POS = Vector2{Utility::WIN_WIDTH - 230, 30};
-static const Vector2 VLINE_OUTER_END_POS =
+const Vector2 VLINE_OUTER_START_POS = Vector2{Utility::WIN_WIDTH - 230, 30};
+const Vector2 VLINE_OUTER_END_POS =
     Vector2{Utility::WIN_WIDTH - 230, Utility::WIN_HEIGHT - 30};
 
 // Horizontal top line start and end positions
-static const Vector2 HLINE_TOP_START_POS = Vector2{50, 165};
-static const Vector2 HLINE_TOP_END_POS = Vector2{Utility::WIN_WIDTH - 50, 165};
+const Vector2 HLINE_TOP_START_POS = Vector2{50, 165};
+const Vector2 HLINE_TOP_END_POS = Vector2{Utility::WIN_WIDTH - 50, 165};
 
 // Horizontal bottom line start and end positions
-static const Vector2 HLINE_BOTTOM_START_POS = Vector2{50, Utility::WIN_HEIGHT - 165};
-static const Vector2 HLINE_BOTTOM_END_POS =
+const Vector2 HLINE_BOTTOM_START_POS = Vector2{50, Utility::WIN_HEIGHT - 165};
+const Vector2 HLINE_BOTTOM_END_POS =
     Vector2{Utility::WIN_WIDTH - 50, Utility::WIN_HEIGHT - 165};
 
 namespace Map {
+const short int GRID_SIZE = 9;
+
 class Tile {
  private:
   double centerX_ = 0;
@@ -50,19 +52,23 @@ class Tile {
   void setUser(const char &user);
 
  public:
-  bool notTaken() const;
+  bool isNotTaken() const;
 };
 
-// Center coords for each tile
-static std::array<Tile, 9> tiles = {
-    Tile(140.0f, 100.0f, 1), Tile(320.0f, 100.0f, 2), Tile(500.0f, 100.0f, 3),
-    Tile(140.0f, 240.0f, 4), Tile(320.0f, 240.0f, 5), Tile(500.0f, 240.0f, 6),
-    Tile(140.0f, 380.0f, 7), Tile(320.0f, 380.0f, 8), Tile(500.0f, 380.0f, 9)};
-
 class Grid {
+ private:
+  std::array<Tile, GRID_SIZE> tiles_ = {
+      Tile(140.0f, 100.0f, 1), Tile(320.0f, 100.0f, 2), Tile(500.0f, 100.0f, 3),
+      Tile(140.0f, 240.0f, 4), Tile(320.0f, 240.0f, 5), Tile(500.0f, 240.0f, 6),
+      Tile(140.0f, 380.0f, 7), Tile(320.0f, 380.0f, 8), Tile(500.0f, 380.0f, 9)};
+
  public:
   Grid();
   void draw() const;
+
+ public:
+  std::array<Tile, GRID_SIZE> getTiles() const;
+  void setTiles(const std::array<Tile, GRID_SIZE> &tiles);
 
  private:
   void drawGrid() const;

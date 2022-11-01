@@ -15,10 +15,10 @@ void Map::Grid::drawGrid() const {
 }
 
 void Map::Grid::drawFilledTiles() const {
-  for (const auto &tile : tiles) {
+  for (const auto &tile : tiles_) {
     switch (tile.getUser()) {
       case 'X': {
-        Raylib::DrawModelX(tile.getCenterX(), tile.getCenterY(), 8.0, BLACK);
+        Raylib::DrawModelX(tile.getCenterX(), tile.getCenterY(), LINE_THICKNESS, BLACK);
         break;
       }
       case 'O': {
@@ -30,6 +30,14 @@ void Map::Grid::drawFilledTiles() const {
       }
     }
   }
+}
+
+std::array<Map::Tile, Map::GRID_SIZE> Map::Grid::getTiles() const {
+  return tiles_;
+}
+
+void Map::Grid::setTiles(const std::array<Tile, Map::GRID_SIZE> &tiles) {
+  tiles_ = tiles;
 }
 
 Map::Tile::Tile() {}
@@ -56,6 +64,6 @@ void Map::Tile::setUser(const char &user) {
   user_ = user;
 }
 
-bool Map::Tile::notTaken() const {
+bool Map::Tile::isNotTaken() const {
   return user_ == 'N';
 }
