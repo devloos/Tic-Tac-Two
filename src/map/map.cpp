@@ -15,49 +15,47 @@ void Map::Grid::drawGrid() const {
 }
 
 void Map::Grid::drawFilledTiles() const {
-  for (const auto &tile : filledTiles_) {
-    switch (tile.second) {
+  for (const auto &tile : tiles) {
+    switch (tile.getUser()) {
       case 'X': {
-        Raylib::DrawModelX(
-            TILES_MAP_COOR.at(tile.first).first, TILES_MAP_COOR.at(tile.first).second,
-            8.0, BLACK);
+        Raylib::DrawModelX(tile.getCenterX(), tile.getCenterY(), 8.0, BLACK);
         break;
       }
       case 'O': {
-        Raylib::DrawModelO(
-            TILES_MAP_COOR.at(tile.first).first, TILES_MAP_COOR.at(tile.first).second,
-            RAYWHITE);
+        Raylib::DrawModelO(tile.getCenterX(), tile.getCenterY(), BLACK);
+        break;
+      }
+      case 'N': {
         break;
       }
     }
   }
 }
 
-bool Map::Grid::isTileAvailable(const Tile &tile) const {
-  auto result = std::find(availableTiles_.begin(), availableTiles_.end(), tile);
-  return (result != std::end(availableTiles_)) ? true : false;
+Map::Tile::Tile() {}
+Map::Tile::Tile(const int &centerX, const int &centerY, const short int &index)
+    : centerX_(centerX), centerY_(centerY), index_(index), user_('N') {}
+
+double Map::Tile::getCenterX() const {
+  return centerX_;
 }
 
-void Map::Grid::setFilledTile(const Tile &tile, const char user) {
-  std::vector<Tile>::iterator it =
-      std::find(availableTiles_.begin(), availableTiles_.end(), tile);
-
-  if (it == std::end(availableTiles_)) {
-    throw Utility::Exception("Setting filed tile that is already taken.");
-  }
-
-  availableTiles_.erase(it);
-  filledTiles_.push_back(std::make_pair(tile, user));
+double Map::Tile::getCenterY() const {
+  return centerY_;
 }
 
-Map::Tile &Map::operator++(Map::Tile &tile) {
-  int i = static_cast<int>(tile);
-  tile = static_cast<Map::Tile>(++i);
-  return tile;
+short int Map::Tile::getIndex() const {
+  return index_;
 }
 
-Map::Tile &Map::operator--(Map::Tile &tile) {
-  int i = static_cast<int>(tile);
-  tile = static_cast<Map::Tile>(++i);
-  return tile;
+char Map::Tile::getUser() const {
+  return user_;
+}
+
+void Map::Tile::setUser(const char &user) {
+  user_ = user;
+}
+
+bool Map::Tile::notTaken() const {
+  return user_ == 'N';
 }

@@ -2,8 +2,8 @@
 #define MAP_H_
 #include <raylib.h>
 
+#include <array>
 #include <iostream>
-#include <unordered_map>
 #include <utility>
 #include <vector>
 
@@ -30,34 +30,43 @@ static const Vector2 HLINE_BOTTOM_END_POS =
     Vector2{Utility::WIN_WIDTH - 50, Utility::WIN_HEIGHT - 165};
 
 namespace Map {
-enum struct Tile { ONE = 1, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE };
-// Util for tile enum
-Tile &operator++(Tile &tile);
-Tile &operator--(Tile &tile);
+class Tile {
+ private:
+  double centerX_ = 0;
+  double centerY_ = 0;
+  short int index_ = 0;
+  char user_ = 'N';
+
+ public:
+  Tile();
+  Tile(const int &centerX, const int &centerY, const short int &index);
+
+ public:
+  double getCenterX() const;
+  double getCenterY() const;
+  short int getIndex() const;
+
+  char getUser() const;
+  void setUser(const char &user);
+
+ public:
+  bool notTaken() const;
+};
 
 // Center coords for each tile
-const std::unordered_map<Tile, std::pair<double, double>> TILES_MAP_COOR = {
-    {Tile::ONE, {140, 100}},   {Tile::TWO, {320, 100}},   {Tile::THREE, {500, 100.0}},
-    {Tile::FOUR, {140, 240}},  {Tile::FIVE, {320, 240}},  {Tile::SIX, {500, 240}},
-    {Tile::SEVEN, {140, 380}}, {Tile::EIGHT, {320, 380}}, {Tile::NINE, {500, 380}}};
+static std::array<Tile, 9> tiles = {
+    Tile(140.0f, 100.0f, 1), Tile(320.0f, 100.0f, 2), Tile(500.0f, 100.0f, 3),
+    Tile(140.0f, 240.0f, 4), Tile(320.0f, 240.0f, 5), Tile(500.0f, 240.0f, 6),
+    Tile(140.0f, 380.0f, 7), Tile(320.0f, 380.0f, 8), Tile(500.0f, 380.0f, 9)};
 
 class Grid {
  public:
   Grid();
   void draw() const;
 
-  bool isTileAvailable(const Tile &tile) const;
-  void setFilledTile(const Tile &tile, const char user);
-
  private:
   void drawGrid() const;
   void drawFilledTiles() const;
-  // Tiles will be popped as tiles get filled
-  std::vector<Tile> availableTiles_ = {Tile::ONE,   Tile::TWO,   Tile::THREE,
-                                       Tile::FOUR,  Tile::FIVE,  Tile::SIX,
-                                       Tile::SEVEN, Tile::EIGHT, Tile::NINE};
-  // Tiles will be added as they get filled
-  std::vector<std::pair<Tile, char>> filledTiles_;
 };
 }  // namespace Map
 
