@@ -25,7 +25,7 @@ void Map::Grid::drawFilledTiles() const {
         Raylib::DrawModelO(tile.getCenterX(), tile.getCenterY(), BLACK);
         break;
       }
-      case 'N': {
+      case NA: {
         break;
       }
     }
@@ -42,7 +42,7 @@ void Map::Grid::setTiles(const std::array<Tile, Map::GRID_SIZE> &tiles) {
 
 Map::Tile::Tile() {}
 Map::Tile::Tile(const int &centerX, const int &centerY, const short int &index)
-    : centerX_(centerX), centerY_(centerY), index_(index), user_('N') {}
+    : centerX_(centerX), centerY_(centerY), index_(index), user_(NA) {}
 
 double Map::Tile::getCenterX() const {
   return centerX_;
@@ -65,5 +65,5 @@ void Map::Tile::setUser(const char &user) {
 }
 
 bool Map::Tile::isNotTaken() const {
-  return user_ == 'N';
+  return user_ == NA;
 }

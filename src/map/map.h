@@ -31,13 +31,14 @@ const Vector2 HLINE_BOTTOM_END_POS =
 
 namespace Map {
 const short int GRID_SIZE = 9;
+const char NA = 'N';
 
 class Tile {
  private:
   double centerX_ = 0;
   double centerY_ = 0;
   short int index_ = 0;
-  char user_ = 'N';
+  char user_ = NA;
 
  public:
   Tile();
