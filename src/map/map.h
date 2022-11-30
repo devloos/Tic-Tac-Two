@@ -35,8 +35,8 @@ const char NA = 'N';
 
 class Tile {
  private:
-  double centerX_ = 0;
-  double centerY_ = 0;
+  double centerX_ = 0.0;
+  double centerY_ = 0.0;
   short int index_ = 0;
   char user_ = NA;
 
@@ -57,12 +57,6 @@ class Tile {
 };
 
 class Grid {
- private:
-  std::array<Tile, GRID_SIZE> tiles_ = {
-      Tile(140.0f, 100.0f, 1), Tile(320.0f, 100.0f, 2), Tile(500.0f, 100.0f, 3),
-      Tile(140.0f, 240.0f, 4), Tile(320.0f, 240.0f, 5), Tile(500.0f, 240.0f, 6),
-      Tile(140.0f, 380.0f, 7), Tile(320.0f, 380.0f, 8), Tile(500.0f, 380.0f, 9)};
-
  public:
   Grid();
   void draw() const;
@@ -74,6 +68,12 @@ class Grid {
  private:
   void drawGrid() const;
   void drawFilledTiles() const;
+
+ private:
+  std::array<Tile, GRID_SIZE> tiles_ = {
+      Tile(140.0f, 100.0f, 1), Tile(320.0f, 100.0f, 2), Tile(500.0f, 100.0f, 3),
+      Tile(140.0f, 240.0f, 4), Tile(320.0f, 240.0f, 5), Tile(500.0f, 240.0f, 6),
+      Tile(140.0f, 380.0f, 7), Tile(320.0f, 380.0f, 8), Tile(500.0f, 380.0f, 9)};
 };
 }  // namespace Map
 
