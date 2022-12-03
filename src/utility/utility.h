@@ -9,11 +9,11 @@ const int WIN_WIDTH = 640;
 const int WIN_HEIGHT = 480;
 
 class Exception {
- private:
-  std::string msg_;
-
  public:
   Exception(const std::string &msg);
+
+ private:
+  std::string msg_;
 };
 }  // namespace Utility
 

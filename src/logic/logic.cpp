@@ -19,22 +19,20 @@ void gridMouseClick(Map::Grid &grid, const std::vector<Sound> &soundFX) {
 
   static int turn = 1;
 
-  std::array<Map::Tile, Map::GRID_SIZE> tiles = grid.getTiles();
+  Map::Tile** tiles = grid.getTiles();
 
-  int i = 0;
+  assert(tiles != nullptr);
+
   for (int row = 0; row < 3; row++) {
     for (int col = 0; col < 3; col++) {
       if (isMouseInTileArea(MX, MY, row, col)) {
-        if (tiles[i].isNotTaken()) {
+        if (tiles[row][col].isNotTaken()) {
           PlaySound((turn % 2 == 0) ? soundFX.at(1) : soundFX.at(0));
-          tiles[i].setUser((turn % 2 == 0) ? 'O' : 'X');
+          tiles[row][col].setUser((turn % 2 == 0) ? 'O' : 'X');
           ++turn;
         }
       }
-      ++i;
     }
   }
-
-  grid.setTiles(tiles);
 }
 }  // namespace Logic

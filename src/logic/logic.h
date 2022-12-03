@@ -3,6 +3,7 @@
 #include <raylib.h>
 
 #include <array>
+#include <cassert>
 #include <iostream>
 #include <vector>
 

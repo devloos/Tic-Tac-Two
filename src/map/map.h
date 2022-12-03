@@ -30,50 +30,55 @@ const Vector2 HLINE_BOTTOM_END_POS =
     Vector2{Utility::WIN_WIDTH - 50, Utility::WIN_HEIGHT - 165};
 
 namespace Map {
-const short int GRID_SIZE = 9;
+const short int GRID_SIZE = 3;
 const char NA = 'N';
 
 class Tile {
- private:
-  double centerX_ = 0.0;
-  double centerY_ = 0.0;
-  short int index_ = 0;
-  char user_ = NA;
-
  public:
   Tile();
-  Tile(const int &centerX, const int &centerY, const short int &index);
+  Tile(const int &centerX, const int &centerY);
 
  public:
   double getCenterX() const;
   double getCenterY() const;
-  short int getIndex() const;
 
   char getUser() const;
   void setUser(const char &user);
 
  public:
   bool isNotTaken() const;
+  void reset() noexcept;
+
+ private:
+  double centerX_ = 0.0;
+  double centerY_ = 0.0;
+  char user_ = NA;
 };
 
 class Grid {
  public:
   Grid();
-  void draw() const;
+  ~Grid() noexcept;
 
  public:
-  std::array<Tile, GRID_SIZE> getTiles() const;
-  void setTiles(const std::array<Tile, GRID_SIZE> &tiles);
+  Tile** getTiles();
+
+ public:
+  void draw() const;
+  void clearBoard() noexcept;
 
  private:
   void drawGrid() const;
   void drawFilledTiles() const;
 
  private:
-  std::array<Tile, GRID_SIZE> tiles_ = {
-      Tile(140.0f, 100.0f, 1), Tile(320.0f, 100.0f, 2), Tile(500.0f, 100.0f, 3),
-      Tile(140.0f, 240.0f, 4), Tile(320.0f, 240.0f, 5), Tile(500.0f, 240.0f, 6),
-      Tile(140.0f, 380.0f, 7), Tile(320.0f, 380.0f, 8), Tile(500.0f, 380.0f, 9)};
+  Grid(const Grid &other) = delete;
+  Grid(Grid &&other) = delete;
+  Grid &operator=(const Grid &other) = delete;
+  Grid &operator=(Grid &&other) = delete;
+
+ private:
+  Tile** tiles_ = nullptr;
 };
 }  // namespace Map
 
