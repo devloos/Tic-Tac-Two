@@ -5,7 +5,57 @@ void start(Map::Grid &grid, const std::vector<Sound> &soundFX) {
   if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
     gridMouseClick(grid, soundFX);
   }
-  // TODO: Validate win
+
+  if (winnerExist(grid)) {
+    // show result
+    grid.clearBoard();
+  }
+}
+
+bool winnerExist(Map::Grid &grid) {
+  Map::Tile** tiles = grid.getTiles();
+
+  assert(tiles != nullptr);
+
+  auto isWinner = [](const char &pos1, const char &pos2, const char &pos3) {
+    if (pos1 == Map::NA || pos2 == Map::NA || pos3 == Map::NA) {
+      return false;
+    }
+
+    if (pos1 == pos2 && pos2 == pos3) {
+      return true;
+    }
+
+    return false;
+  };
+
+  // Row Check
+  for (int row = 0; row < Map::GRID_SIZE; row++) {
+    if (isWinner(
+            tiles[row][0].getUser(), tiles[row][1].getUser(), tiles[row][2].getUser())) {
+      return true;
+    }
+  }
+
+  // Col Check
+  for (int col = 0; col < Map::GRID_SIZE; col++) {
+    if (isWinner(
+            tiles[0][col].getUser(), tiles[1][col].getUser(), tiles[2][col].getUser())) {
+      return true;
+    }
+  }
+
+  // Diagonal check
+  if (isWinner(tiles[0][0].getUser(), tiles[1][1].getUser(), tiles[2][2].getUser())) {
+    return true;
+  }
+
+  // Diagonal check
+  if (isWinner(tiles[0][2].getUser(), tiles[1][1].getUser(), tiles[2][0].getUser())) {
+    return true;
+  }
+
+  return false;
 }
 
 bool isMouseInTileArea(const int &MX, const int &MY, const int &row, const int &col) {
