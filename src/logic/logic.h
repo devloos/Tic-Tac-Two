@@ -10,7 +10,7 @@
 #include "../map/map.h"
 
 namespace Logic {
-void start(Map::Grid &grid, const std::vector<Sound> &soundFX);
+void start(bool &gameover, Map::Grid &grid, const std::vector<Sound> &soundFX);
 void gridMouseClick(Map::Grid &grid, const std::vector<Sound> &soundFX);
 bool winnerExist(Map::Grid &grid);
 }  // namespace Logic

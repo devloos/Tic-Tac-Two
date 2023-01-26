@@ -25,9 +25,14 @@ bool Tapp::init() {
 int Tapp::exec() {
   Map::Grid grid;
 
-  while (!WindowShouldClose() && !gameOver_) {
-    Draw::start(grid);
-    Logic::start(grid, soundFX_);
+  while (!WindowShouldClose()) {
+    if (!gameOver_) {
+      Draw::start(grid);
+      Logic::start(gameOver_, grid, soundFX_);
+    } else {
+      Draw::restart(grid);
+      Logic::restart();
+    }
   }
 
   return 0;

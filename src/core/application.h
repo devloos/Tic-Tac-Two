@@ -18,7 +18,6 @@ class Tapp {
   Tapp();
   ~Tapp();
 
-  // Methods
   bool init();
   int exec();
 

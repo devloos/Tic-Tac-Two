@@ -1,14 +1,13 @@
 #include "logic.h"
 
 namespace Logic {
-void start(Map::Grid &grid, const std::vector<Sound> &soundFX) {
-  if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
-    gridMouseClick(grid, soundFX);
+void start(bool &gameover, Map::Grid &grid, const std::vector<Sound> &soundFX) {
+  if (winnerExist(grid)) {
+    gameover = true;
   }
 
-  if (winnerExist(grid)) {
-    // show result
-    grid.clearBoard();
+  if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+    gridMouseClick(grid, soundFX);
   }
 }
 
